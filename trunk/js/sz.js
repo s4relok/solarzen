@@ -139,7 +139,6 @@ var power = 0;
 
 function init() {
 
-
     if (!$.cookie("USER_LEVEL")) {
         $.cookie("USER_LEVEL", USER_LEVEL, options);
     }
