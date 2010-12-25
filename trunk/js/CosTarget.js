@@ -14,6 +14,6 @@ CosTarget = newClass(SlideXTarget, {
 		
 		nextY: function(){
 			this.y = Math.abs( Math.round(  this.heigth*Math.cos( (this.x/180)*Math.PI ) ) ) + 20;
-		},
+		}
 			
 	});	
