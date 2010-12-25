@@ -10,7 +10,9 @@
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="swfobject.js"></script>
 <script type="text/javascript">
-	
+
+    // TODO: make up something with IE bugs
+
 	// Получим userAgent браузера и переведем его в нижний регистр
 	var ua = navigator.userAgent.toLowerCase();
 	// Определим Internet Explorer
