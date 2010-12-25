@@ -1,0 +1,197 @@
+body {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    overflow: hidden;
+    background-image: url("images/sz/back1600.jpg");
+    background-position: center;
+	font-family:"Times New Roman";
+	font-size:26px;
+	color:white;
+	
+	
+}
+
+a {
+	outline: 0px;
+}
+
+ul{
+	text-align: left;
+	list-style:disc;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+a {
+	color:white;
+}
+
+img {
+  border:0;
+}
+
+.Screen {
+	
+	
+	
+	/* Запрет выделения */
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+	
+	cursor:default;
+	
+    position: absolute;
+    top: 5%;
+    left: 35%;
+    width: 320px;
+    height: 480px;
+    text-align: center;
+    /*
+border: solid black thin;
+*/
+}
+
+
+
+.ScreenMsgLeft {
+	cursor:default;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 200px;
+    height: 480px;
+    text-align: center;
+    /*
+border: solid black thin;
+*/
+}
+
+.MenuItem {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.QuoteItem { 
+ 	text-align: center;   
+	padding: 25px 15px 0px 15px;
+}
+
+.Planet, .Sun, .StartCircle, .Handle, .BBL_IN_STR, .Target, .ContainerCounter {
+    position: absolute;
+}
+
+.Sun {
+    width: 106px;
+    height: 106px;
+    background-image: url("images/sz/sunb.png");
+}
+
+.Planet {
+    width: 61px;
+    height: 61px;
+}
+
+.StartCircle {
+    width: 193px;
+    height: 193px;
+    left: 65px;
+    top: 333px;
+    background-image: url("images/sz/str.png");
+}
+
+.Handle {
+    width: 28px;
+    height: 28px;
+    left: 147px;
+    top: 415px;
+    background-image: url("images/sz/handle.png");
+}
+
+.BBL_IN_STR {
+    width: 67px;
+    height: 67px;
+    background-image: url("images/sz/bbl_in_str.png");
+    z-index: -3;
+}
+
+.Target {
+	width: 64px;
+    height: 64px;
+	background-image: url("images/sz/target.png");
+	z-index:-1;
+}
+
+.ContainerCounter {
+	left: 20px;
+    top: 452px;
+	width: 50px;
+    height: 15px;
+	z-index:-1;	
+	font-family:Impact;
+	font-size:18px;
+	color:white;
+}
+
+.Copyright {
+	
+	/* Запрет выделения */
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+	
+	font-size:12px;
+	font-family: "Courier New";
+	position: absolute;
+	bottom: 50px;
+	right:-220px;
+	width:230px;
+	height: 100px; 
+	color:black;
+	cursor:pointer;
+}
+
+.CopyrightLine {
+	
+	min-height:16px;
+	width:100%;
+	
+	margin-bottom: 4px;
+	padding: 0px 0px 0px 0px;
+	background-color: #C9D5ED;
+}
+
+.BlockGmail {
+	float: right;
+	min-height: 16px;
+	min-width: 16px;
+	margin-top: 2px;
+	margin-right: 5px;
+}
+
+.Block {
+	float: left;
+	width:10px;
+	min-height:16px;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	margin-right:5px;
+	background-color:#C4A54B;
+}
+
+#ieScreen IMG {
+	position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+}
+
+#ieScreen IMG.active {
+    z-index:10;
+}
+
+#ieScreen IMG.last-active {
+    z-index:9;
+}
+
