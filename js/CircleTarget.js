@@ -12,10 +12,8 @@ CircleTarget = newClass(Target, {
   		update: function() { 	
 			
 			this.angle+=this.w;
-				
 			this.nextX();
 			this.nextY();
-			
 			updateMyElement(this, this.x-G.TGT_R, this.y-G.TGT_R);    		
   		},
 		
