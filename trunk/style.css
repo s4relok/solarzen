@@ -1,0 +1,28 @@
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.OuterLine {
+	width: 100%;
+	height: 20px;
+	
+	/*
+border: solid 1px #000;
+*/
+}
+
+.InnerLine {
+	width: 10%;
+	height: 99%;
+	
+	position:relative;
+	/*
+top: 300px;
+*/
+	
+	background-color:#000;
+	border: solid 1px #000;
+}
