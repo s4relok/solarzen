@@ -1,125 +1,87 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- <link rel="stylesheet" type="text/css" href="http://sector14.pnz.ru/s14/style.css"/> -->
-<link rel="shortcut icon" href="images/sz/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" type="text/css" href="sz.css"/>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
-<title>Solar Zen Gamma</title>
-<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.cookie.js"></script>
-<script type="text/javascript" src="swfobject.js"></script>
-<script type="text/javascript">
+    <link rel="shortcut icon" href="images/sz/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="sz.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251"/>
+    <title>Solar Zen &gamma;</title>
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/newClass.js"></script>
+    <script type="text/javascript" src="js/fixEvent.js"></script>
+    <script type="text/javascript" src="js/ArrayList.js"></script>
+    <script type="text/javascript" src="js/Point.js"></script>
+    <script type="text/javascript" src="js/Target.js"></script>
+    <script type="text/javascript" src="js/CircleTarget.js"></script>
+    <script type="text/javascript" src="js/SlideXTarget.js"></script>
+    <script type="text/javascript" src="js/CosTarget.js"></script>
+    <script type="text/javascript" src="js/Planet.js"></script>
+    <script type="text/javascript" src="js/NullPlanet.js"></script>
+    <script type="text/javascript" src="js/Carousel.js"></script>
+    <script type="text/javascript" src="js/GameplayState.js"></script>
+    <script type="text/javascript" src="js/sz.js"></script>
 
-    // TODO: make up something with IE bugs
+    <script type="text/javascript">
 
-	// Получим userAgent браузера и переведем его в нижний регистр
-	var ua = navigator.userAgent.toLowerCase();
-	// Определим Internet Explorer
-	isIE = (ua.indexOf("msie") != -1 && ua.indexOf("opera") == -1);
-	
-	if(!isIE){
-		
-		document.writeln('<scr' + 'ipt type="text'+'/javascript" src="js/newClass.js"><'+'/scr' + 'ipt>');
-		document.writeln('<scr'+'ipt type="text'+'/javascript" src="js'+'/'+'newClass.js"><'+'/sc'+'ript>');
-		document.writeln('<scr'+'ipt type="text'+'/'+'javascript" src="js'+'/'+'fixEvent.js">'+'<'+'/sc'+'ript>');
-		document.writeln('<script type="text'+'/'+'javascript" src="js'+'/'+'ArrayList.js"'+'>'+'<'+'/sc'+'ript>');
-		document.writeln('<scr'+'ipt type="text'+'/javascript" src="js'+'/'+'Point.js"></sc'+'ript>');
-		document.writeln('<scr'+'ipt type="text'+'/javascript" src="js/Target.js"></scr'+'ipt>');
-		document.writeln('<sc'+'ript type="text/javascript" src="js'+'/CircleTarget.js"></scr'+'ipt>');
-		document.writeln('<scri'+'pt type="text/javascript" src="js'+'/SlideXTarget.js"></scr'+'ipt>');
-		document.writeln('<scri'+'pt type="text/j'+'avascript" src="js/Cos'+'Targe'+'t.js"></scr'+'ipt>');
-		document.writeln('<scr'+'ipt type="text/javascript" src="js'+'/Planet.js"></scr'+'ipt>');
-		document.writeln('<scr'+'ipt type="text/javascript" src="js'+'/NullPlanet.js"></scr'+'ipt>');
-		document.writeln('<scri'+'pt type="text/javascript" src="js'+'/Caro'+'usel.js"'+'></sc'+'ript>');
-		document.writeln('<scri'+'pt type="text'+'/javascript" src="js/GameplayState.js"></sc'+'ript>');
-		document.writeln('<sc'+'ript type="text/javascript" src="js'+'/sz.js"></sc'+'ript>');
-		
-	} else {
-		
-	}
-	
-		
-	
+        function isIE6OrLess() {
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("msie") != -1
+                    && navigator.appVersion.substring(0, 1) <= 4;
+        }
 
-    function slideSwitch(){
-        var $active = $('#ieScreen IMG.active');
-        
-        if ($active.length == 0) 
-            $active = $('#ieScreen IMG:last');
-        
-        var $next = $active.next().length ? $active.next() : $('#ieScreen IMG:first');
-        
-        $active.addClass('last-active');
-        
-        $next.css({
-            opacity: 0.0
-        }).addClass('active').animate({
-            opacity: 1.0
-        }, 1000, function(){
-            $active.removeClass('active last-active');
-        });
-    }
-	
-	function initCom(){
-		if(this.init){
-			init();
-			
-			/*
-			var so = new SWFObject("playerMini.swf", "mymovie", "75", "30", "7", "#FFFFFF");
-			   so.addVariable("autoPlay", "no");
-			   so.addVariable("soundPath", "sounds/arab.mp3");
-			   so.write("flashPlayer");
-			   */
-		}
-			
-		else {	
-			
-			$('div.Block').css("display", "none");
-			
-			document.getElementById("ieScreen").style.display = "block";
-			$("div.ScreenMsgLeft").show();
-			$("#author").show();
-			$("#author").css("right", "30px");
-			$("#author").css("bottom", "200px");
-			$("#author").css("cursor", "auto");
-			$("div.Block").css("min-height", "19px");
-			$(function() {
-			    setInterval( "slideSwitch()", 5000 );
-			});			
-		}
-	}
-	
-	if (window.addEventListener)
-    	window.addEventListener("load", initCom, false);
-	else if (window.attachEvent)
-    	window.attachEvent("onload", initCom);
-	
-	/*	
-	$(document).ready(function(){
-   		$("div.Screen").click(function(event){
-     		$(this).hide("slow");
-   		});
- 	});
- 	*/
+        function slideSwitch() {
+            var $active = $('#ieScreen IMG.active');
+            if ($active.length == 0)
+                $active = $('#ieScreen IMG:last');
+            var $next = $active.next().length ? $active.next() : $('#ieScreen IMG:first');
+            $active.addClass('last-active');
 
-</script>
+            $next.css({
+                opacity: 0.0
+            }).addClass('active').animate({
+                opacity: 1.0
+            }, 1000, function() {
+                $active.removeClass('active last-active');
+            });
+        }
+
+        function initCom() {
+            if (!isIE6OrLess()) {
+                init();
+            } else {
+                $('div.Block').css("display", "none");
+                document.getElementById("ieScreen").style.display = "block";
+                $("div.ScreenMsgLeft").show();
+                $("#author").show();
+                $("#author").css("right", "30px");
+                $("#author").css("bottom", "200px");
+                $("#author").css("cursor", "auto");
+                $("div.Block").css("min-height", "19px");
+                $(function() {
+                    setInterval("slideSwitch()", 5000);
+                });
+            }
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", initCom, false);
+        else if (window.attachEvent)
+            window.attachEvent("onload", initCom);
+        
+    </script>
 </head>
 
 <body>
-	
-	<!-- flash 1 
-<div id="flashPlayer"></div>-->
 
-<object type="application/x-shockwave-flash" data="http://flash-mp3-player.net/medias/player_mp3_mini.swf" width="200" height="20">
-    <param name="movie" value="http://flash-mp3-player.net/medias/player_mp3_mini.swf" />
-    <param name="bgcolor" value="#202D3E" />
-    <param name="FlashVars" value="mp3=sounds/all.mp3" />
+<object type="application/x-shockwave-flash" data="http://flash-mp3-player.net/medias/player_mp3_mini.swf" width="200"
+        height="20">
+    <param name="movie" value="http://flash-mp3-player.net/medias/player_mp3_mini.swf"/>
+    <param name="bgcolor" value="#202D3E"/>
+    <param name="FlashVars" value="mp3=sounds/all.mp3"/>
 </object>
 
 
-
-	
 <div id="menuScreen" class="Screen" style="display:none;">
     <div class="MenuItem">
         <img alt="Solar Zen" src="images/sz/logo_sz.png"/>
@@ -171,21 +133,21 @@
     </div>
 </div>
 <div id="ieScreen" class="Screen" style="display:none;">
-	<img alt="All is simple" class="active first" src="images/sz/screen1.png"/>
-	<img alt="All is simple" src="images/sz/screen2.png"/>
-	<img alt="All is simple" src="images/sz/screen3.png"/>
-	<img alt="All is simple" class="last" src="images/sz/screen4.png"/>
-    
+    <img alt="All is simple" class="active first" src="images/sz/screen1.png"/>
+    <img alt="All is simple" src="images/sz/screen2.png"/>
+    <img alt="All is simple" src="images/sz/screen3.png"/>
+    <img alt="All is simple" class="last" src="images/sz/screen4.png"/>
+
 </div>
 
 <div class="ScreenMsgLeft" style="display:none;">
-If you want to play it you need to use one of these browsers:
-<ul>
-	<li><a href="http://www.mozilla-europe.org/ru/firefox/">Firefox 2.0 or later</a></li>
-	<li><a href="http://www.opera.com/">Opera 9.0 or later</a></li>
-	<li><a href="http://google.com/chrome">Google Chrome any versions</a></li>
-	<li><a href="http://www.apple.com/safari/">Safari 4</a></li>
-</ul>
+    If you want to play it you need to use one of these browsers:
+    <ul>
+        <li><a href="http://www.mozilla-europe.org/ru/firefox/">Firefox 2.0 or later</a></li>
+        <li><a href="http://www.opera.com/">Opera 9.0 or later</a></li>
+        <li><a href="http://google.com/chrome">Google Chrome any versions</a></li>
+        <li><a href="http://www.apple.com/safari/">Safari 4</a></li>
+    </ul>
 </div>
 
 <div id="newGameScreen" class="Screen" style="display:none;">
@@ -194,7 +156,7 @@ If you want to play it you need to use one of these browsers:
             <img alt="Back" src="images/sz/blackhole_back.png"/>
         </div>
         <div id="btnNewGameSound" style="float:right;padding:15px 15px;">
-            <img alt="Sound switcher" style="display:none; src="images/sz/sound_on.png"/>
+            <img alt="Sound switcher" style="display:none; src=" images/sz/sound_on.png"/>
         </div>
     </div>
 </div>
@@ -204,7 +166,7 @@ If you want to play it you need to use one of these browsers:
             <img alt="Back" src="images/sz/text_back.png"/>
         </div>
         <div id="btnGameplaySound" style="float:right;padding:15px 15px;">
-            <img alt="Sound switcher" style="display:none; src="images/sz/sound_on.png"/>
+            <img alt="Sound switcher" style="display:none; src=" images/sz/sound_on.png"/>
         </div>
     </div>
     <div class="StartCircle">
@@ -223,15 +185,16 @@ If you want to play it you need to use one of these browsers:
         No Quote
     </div>
 </div>
-<div id="author" title="Double click on these squares opens contact information" class="Copyright" style="display:none;right:-220px">
+<div id="author" title="Double click on these squares opens contact information" class="Copyright"
+     style="display:none;right:-220px">
     <div class="CopyrightLine">
         <div class="Block">
             &nbsp;
         </div>
-		<div style="float:left;">
-        <b>Code:</b>
-        Kolesin Andrey 
-		</div>
+        <div style="float:left;">
+            <b>Code:</b>
+            Kolesin Andrey
+        </div>
         <div title="mail" class="BlockGmail">
             <a href="mailto:s4relok@gmail.com"><img alt="mail" src="images/sz/gmail.bmp"/></a>
         </div>
@@ -240,9 +203,10 @@ If you want to play it you need to use one of these browsers:
         <div class="Block">
             &nbsp;
         </div>
-		<div style="float:left;">
-        <b>Graphic:</b>
-        Voronin Kirill </div>
+        <div style="float:left;">
+            <b>Graphic:</b>
+            Voronin Kirill
+        </div>
         <div title="mail" class="BlockGmail">
             <a href="mailto:christaingrey@gmail.com"><img alt="mail" src="images/sz/gmail.bmp"/></a>
         </div>
@@ -251,9 +215,10 @@ If you want to play it you need to use one of these browsers:
         <div class="Block">
             &nbsp;
         </div>
-		<div style="float:left;">
-        <b>QA:</b>
-        Artem Tyapkov </div>
+        <div style="float:left;">
+            <b>QA:</b>
+            Artem Tyapkov
+        </div>
         <div title="mail" class="BlockGmail">
             <a href="mailto:shadowkevil@gmail.com"><img alt="mail" src="images/sz/gmail.bmp"/></a>
         </div>
@@ -264,17 +229,17 @@ If you want to play it you need to use one of these browsers:
         </div>
         <b>HC.Design © 2009</b>
     </div>
-	<div title="Valid XHTML" style="position:absolute; left:20px; top:80px;">
-    <a href="http://validator.w3.org/check?uri=referer"><img
-        src="http://www.w3.org/Icons/valid-xhtml10-blue"
-        alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
- 	 </div>
-	 
-	 <div title="Play it on Android" style="position:absolute; left:130px; top:80px;">
-    <a href="http://www.cyrket.com/package/com.epazzzsoftware.solarzen"><img
-        src="images/sz/and_buy.png"
-        alt="Play it on Android" height="48" width="48" /></a>
- 	 </div>
+    <div title="Valid XHTML" style="position:absolute; left:20px; top:80px;">
+        <a href="http://validator.w3.org/check?uri=referer"><img
+                src="http://www.w3.org/Icons/valid-xhtml10-blue"
+                alt="Valid XHTML 1.0 Transitional" height="31" width="88"/></a>
+    </div>
+
+    <div title="Play it on Android" style="position:absolute; left:130px; top:80px;">
+        <a href="http://www.cyrket.com/package/com.epazzzsoftware.solarzen"><img
+                src="images/sz/and_buy.png"
+                alt="Play it on Android" height="48" width="48"/></a>
+    </div>
 
 </div>
 </body>
