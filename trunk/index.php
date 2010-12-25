@@ -24,6 +24,8 @@
 
     <script type="text/javascript">
 
+
+
         function isIE6OrLess() {
             var ua = navigator.userAgent.toLowerCase();
             return ua.indexOf("msie") != -1
@@ -48,6 +50,8 @@
 
         function initCom() {
             if (!isIE6OrLess()) {
+                // Chrome wrong cursor during dnd fix
+                document.onselectstart = function(){ return false; };
                 init();
             } else {
                 $('div.Block').css("display", "none");
