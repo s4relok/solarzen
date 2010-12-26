@@ -18,12 +18,6 @@ Planet = newClass(Point, {
 		  		gameplayScreen);
 		  
 			this._element.planet = this;
-			 
-			/*
-			this._element.onclick = function(){
-				this.planet.isFixed = false;
-			}
-			*/									
   		},
 		
   		set: function(x, y) { 	
@@ -203,10 +197,7 @@ Planet = newClass(Point, {
 		},
 		
         isFarAway: function(){
-            if (this.length >= G.MAX_LENGTH) 
-                return true;
-            return false;
+            return this.length >= G.MAX_LENGTH;
         }
-		
 			
 	});	

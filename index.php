@@ -24,8 +24,6 @@
 
     <script type="text/javascript">
 
-
-
         function isIE6OrLess() {
             var ua = navigator.userAgent.toLowerCase();
             return ua.indexOf("msie") != -1

@@ -188,16 +188,6 @@ gameplayState = newClass(null, {
 
         this.mLives = new ArrayList();
         this.mCar.mLives = this.mLives;
-
-        /*
-         var i = this.mLives.iterator();
-
-         while (i.hasNext()) {
-         var p = i.next();
-         if(!(p instanceof NullPlanet))
-         p = NullPlanet();
-         }
-         */
     },
 
     reset: function() {

@@ -6,7 +6,7 @@ var options = { path: '/', expires: 365 * 14 };
 
 var GameState = null;
 
-G = {
+var G = {
     LEVELS: 15,
     X2: 160,
     Y2: 240,
@@ -137,16 +137,18 @@ var quoteScreen = null;
 var cntPowerElement = null;
 var power = 0;
 
-function init() {
-
+function loadUserProfile() {
     if (!$.cookie("USER_LEVEL")) {
         $.cookie("USER_LEVEL", USER_LEVEL, options);
     }
     else {
         USER_LEVEL = Number($.cookie("USER_LEVEL"));
     }
+}
 
-
+function init() {
+    loadUserProfile();
+    
     var aboutScreen1 = document.getElementById("aboutScreen");
     menuScreen = document.getElementById("menuScreen");
     var helpScreen = document.getElementById("helpScreen");
@@ -154,11 +156,8 @@ function init() {
     gameplayScreen = document.getElementById("gameplayScreen");
     quoteScreen = document.getElementById("quoteScreen");
 
-//    alert("I'm here!");
-
     var btnAbout1 = document.getElementById("btnAbout");
     var btnHowtoplay = document.getElementById("btnHowtoplay");
-
     var btnNewGame = document.getElementById("btnNewGame");
     var btnContinue = document.getElementById("btnContinue");
     var btnNewGameBack = document.getElementById("btnNewGameBack");
@@ -167,7 +166,7 @@ function init() {
     var author = document.getElementById("author");
     author.style.display = "block";
 
-    if (($.cookie("USER_LEVEL") == 1) || (!$.cookie("USER_LEVEL")))
+    if (USER_LEVEL < 1)
         hideScreen(btnContinue);
     else
         hideScreen(btnNewGame);
