@@ -243,6 +243,11 @@
                 alt="Play it on Android" height="48" width="48"/></a>
     </div>
 
+    <audio id="menu_mark" src="sounds/menu_mark.ogg"></audio>
+    <audio id="menu_out" src="sounds/menu_out.ogg"></audio>
+    <audio id="lvl_ends" src="sounds/lvl_ends.ogg"></audio>
+    <audio id="pln_dst_bypln" src="sounds/pln_dst_bypln.ogg"></audio>
+
 </div>
 </body>
 </html>

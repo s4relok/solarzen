@@ -4,16 +4,19 @@ gameplayState = newClass(null, {
 
         this.sun = installSunOnScreen(gameplayScreen);
         this.sun.onclick = function() {
+            playSound('menu_mark');
             GameState.reset();
         };
 
         this.handle = document.getElementById("handle");
         this.handle.onclick = function() {
+            playSound('menu_mark');
             GameState.mCar.slideRight();
         };
 
         var btnGameplayBack = document.getElementById("btnGameplayBack");
         btnGameplayBack.onclick = function() {
+            playSound('menu_mark');
             GameState.dispose();
             showScreen(newGameScreen);
             GameState = new NewGameState();
@@ -68,7 +71,7 @@ gameplayState = newClass(null, {
              */
 
             return true;
-        }
+        };
 
         /*this._screen*/
         window.onmousemove = function(e) {
@@ -81,7 +84,7 @@ gameplayState = newClass(null, {
 
             GameState.mCar.doTouchMove(x, y);
             return true;
-        }
+        };
 
         window.onmouseup = function(e) {
             e = fixEvent(e);
@@ -141,24 +144,9 @@ gameplayState = newClass(null, {
     },
 
     onWin: function() {
-
+//        playSound('lvl_ends');
         this.isEnd = true;
-
-
         setTimeout("GameState.onAfterWin();", 3000);
-
-        //m.getSoundState().play(R.raw.lvl_ends, 0);
-
-        /*
-         Timer t = new Timer();
-         t.schedule(new TimerTask(){
-
-
-         public void run() {
-         onAfterWin();
-         }
-
-         }, 4000);*/
     },
 
     onAfterWin: function() {

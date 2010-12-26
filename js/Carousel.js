@@ -153,8 +153,7 @@ Carousel = newClass(null, {
         for (var i = 0; i < G.numInCarousel; i++) {
 
             if (this.mCells[i].doTouchUp(xc, yc)) {
-
-                //m.getSoundState().play(R.raw.menu_out, 0);
+//                playSound('menu_out');
                 this.mLives.add(this.mCells[i]);
                 this.mCells[i] = this.nextFromContainer(i);
 
