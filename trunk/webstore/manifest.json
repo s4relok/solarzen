@@ -1,0 +1,17 @@
+{
+  "name": "Solar Zen",
+  "description": "Play with planets",
+  "version": "1.0",
+  "app": {
+    "urls": [
+      "http://sector14.pnz.ru/works/solarzen/"
+    ],
+    "launch": {
+      "web_url": "http://sector14.pnz.ru/works/solarzen/"
+    }
+  },
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "permissions": []
+}
