@@ -149,7 +149,7 @@ function loadUserProfile() {
 function init() {
     loadUserProfile();
     
-    var aboutScreen1 = document.getElementById("aboutScreen");
+    var aboutScreen = document.getElementById("aboutScreen");
     menuScreen = document.getElementById("menuScreen");
     var helpScreen = document.getElementById("helpScreen");
     newGameScreen = document.getElementById("newGameScreen");
@@ -200,12 +200,14 @@ function init() {
     }
 
 
-    aboutScreen1.onclick = function() {
-        aboutScreen1.style.display = "none";
+    aboutScreen.onclick = function() {
+        playSound('menu_mark');
+        aboutScreen.style.display = "none";
         menuScreen.style.display = "block";
     };
 
     helpScreen.onclick = function() {
+        playSound('menu_mark');
         if (HOWTO_PAGE != 5) {
             HOWTO_PAGE++;
         }
@@ -217,11 +219,13 @@ function init() {
     };
 
     btnAbout1.onclick = function() {
+        playSound('menu_mark');
         hideMenuScreen();
-        aboutScreen1.style.display = "block";
+        aboutScreen.style.display = "block";
     };
 
     btnHowtoplay.onclick = function() {
+        playSound('menu_mark');
         hideMenuScreen();
         HOWTO_PAGE = 1;
         setHelpPage(HOWTO_PAGE);
@@ -229,6 +233,7 @@ function init() {
     };
 
     btnNewGame.onclick = function() {
+        playSound('menu_mark');
         hideMenuScreen();
         showScreen(newGameScreen);
         if (!GameState)
@@ -237,6 +242,7 @@ function init() {
     btnContinue.onclick = btnNewGame.onclick;
 
     btnNewGameBack.onclick = function() {
+        playSound('menu_mark');
         hideScreen(newGameScreen);
         showScreen(menuScreen);
     };
@@ -298,6 +304,7 @@ function PlanetButton(x, y, levelNumber) {
     this._element.planet = this;
 
     this._element.onclick = function() {
+        playSound('menu_mark');
         GameState.dispose();
         //hideScreen(newGameScreen);
         showScreen(gameplayScreen);
@@ -436,3 +443,7 @@ NewGameState.prototype.dispose = function() {
     }
     e.style.display = "none";
 };
+
+function playSound(soundId){
+    document.getElementById(soundId).play()
+}
