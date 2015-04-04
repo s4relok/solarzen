@@ -1,0 +1,1 @@
+It's time to relax. Planets are smoothly flying around the Sun.
