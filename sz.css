@@ -42,8 +42,8 @@ img {
 	cursor:default;
 	
     position: absolute;
-    top: 15%;
-    left: 35%;
+    top: calc(50% - 240px);
+    left: calc(50% - 160px);
     width: 320px;
     height: 480px;
     text-align: center;
