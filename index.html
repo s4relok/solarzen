@@ -76,13 +76,6 @@
 
 <body>
 
-<object type="application/x-shockwave-flash" data="http://flash-mp3-player.net/medias/player_mp3_mini.swf" width="200"
-        height="20">
-    <param name="movie" value="http://flash-mp3-player.net/medias/player_mp3_mini.swf"/>
-    <param name="bgcolor" value="#202D3E"/>
-    <param name="FlashVars" value="mp3=sounds/all.mp3"/>
-</object>
-
 
 <div id="menuScreen" class="Screen" style="display:none;">
     <div class="MenuItem">
@@ -157,8 +150,8 @@
         <div id="btnNewGameBack" style="float:left;">
             <img alt="Back" src="images/sz/blackhole_back.png"/>
         </div>
-        <div id="btnNewGameSound" style="float:right;padding:15px 15px;">
-            <img alt="Sound switcher" style="display:none; src=" images/sz/sound_on.png"/>
+        <div id="btnNewGameSound" style="float:right;padding:15px 15px;cursor:pointer;">
+            <img id="newGameSoundIcon" alt="Sound switcher" src="images/sz/sound_on.png"/>
         </div>
     </div>
 </div>
@@ -167,8 +160,8 @@
         <div id="btnGameplayBack" style="float:left;padding:15px 15px;">
             <img alt="Back" src="images/sz/text_back.png"/>
         </div>
-        <div id="btnGameplaySound" style="float:right;padding:15px 15px;">
-            <img alt="Sound switcher" style="display:none; src=" images/sz/sound_on.png"/>
+        <div id="btnGameplaySound" style="float:right;padding:15px 15px;cursor:pointer;">
+            <img id="gameplaySoundIcon" alt="Sound switcher" src="images/sz/sound_on.png"/>
         </div>
     </div>
     <div class="StartCircle">

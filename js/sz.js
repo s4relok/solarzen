@@ -1,6 +1,7 @@
 var HOWTO_PAGE = 1;
 var USER_LEVEL = 1;
 var CURRENT_LEVEL = 0;
+var SOUND_ON = true;
 var delay = 20;
 var options = { path: '/', expires: 365 * 14 };
 
@@ -144,6 +145,31 @@ function loadUserProfile() {
     else {
         USER_LEVEL = Number($.cookie("USER_LEVEL"));
     }
+
+    if ($.cookie("SOUND_ON") == "false")
+        SOUND_ON = false;
+}
+
+function setSoundEnabled(isEnabled) {
+    SOUND_ON = isEnabled;
+    $.cookie("SOUND_ON", SOUND_ON ? "true" : "false", options);
+    updateSoundButtons();
+}
+
+function toggleSound() {
+    setSoundEnabled(!SOUND_ON);
+}
+
+function updateSoundButtons() {
+    var soundImage = SOUND_ON ? "images/sz/sound_on.png" : "images/sz/sound_off.png";
+    var newGameSoundIcon = document.getElementById("newGameSoundIcon");
+    var gameplaySoundIcon = document.getElementById("gameplaySoundIcon");
+
+    if (newGameSoundIcon)
+        newGameSoundIcon.src = soundImage;
+
+    if (gameplaySoundIcon)
+        gameplaySoundIcon.src = soundImage;
 }
 
 function init() {
@@ -161,6 +187,8 @@ function init() {
     var btnNewGame = document.getElementById("btnNewGame");
     var btnContinue = document.getElementById("btnContinue");
     var btnNewGameBack = document.getElementById("btnNewGameBack");
+    var btnNewGameSound = document.getElementById("btnNewGameSound");
+    var btnGameplaySound = document.getElementById("btnGameplaySound");
     cntPowerElement = document.getElementById("cntPower");
 
     var author = document.getElementById("author");
@@ -179,6 +207,7 @@ function init() {
     };
 
     showScreen(menuScreen);
+    updateSoundButtons();
 
 
     function hideMenuScreen() {
@@ -245,6 +274,14 @@ function init() {
         playSound('menu_mark');
         hideScreen(newGameScreen);
         showScreen(menuScreen);
+    };
+
+    btnNewGameSound.onclick = function() {
+        toggleSound();
+    };
+
+    btnGameplaySound.onclick = function() {
+        toggleSound();
     };
 }
 
@@ -444,6 +481,22 @@ NewGameState.prototype.dispose = function() {
     e.style.display = "none";
 };
 
-function playSound(soundId){
-    document.getElementById(soundId).play()
+function playSound(soundId) {
+    if (!SOUND_ON)
+        return;
+
+    var sound = document.getElementById(soundId);
+
+    if (!sound || !sound.play)
+        return;
+
+    try {
+        sound.currentTime = 0;
+        var playResult = sound.play();
+
+        if (playResult && playResult.catch)
+            playResult.catch(function() {});
+    }
+    catch (e) {
+    }
 }

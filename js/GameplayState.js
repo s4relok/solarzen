@@ -120,7 +120,7 @@ gameplayState = newClass(null, {
 
                 if (p.isCross(G.X2, G.Y2) || p.isFarAway()) {
 
-                    //m.getSoundState().play(R.raw.pln_dst_bypln, 0);
+                    playSound('pln_dst_bypln');
                     this.mCar.add(p);
                     this.mCar.resetCarousel();
                     p = new NullPlanet();
@@ -144,7 +144,7 @@ gameplayState = newClass(null, {
     },
 
     onWin: function() {
-//        playSound('lvl_ends');
+        playSound('lvl_ends');
         this.isEnd = true;
         setTimeout("GameState.onAfterWin();", 3000);
     },
