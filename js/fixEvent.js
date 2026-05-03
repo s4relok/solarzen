@@ -1,8 +1,8 @@
 function fixEvent(e) {
-    // получить объект событие для IE
+    // РїРѕР»СѓС‡РёС‚СЊ РѕР±СЉРµРєС‚ СЃРѕР±С‹С‚РёРµ РґР»СЏ IE
     e = e || window.event
  
-    // добавить pageX/pageY для IE
+    // РґРѕР±Р°РІРёС‚СЊ pageX/pageY РґР»СЏ IE
     if ( e.pageX == null && e.clientX != null ) {
         var html = document.documentElement
         var body = document.body
@@ -10,7 +10,7 @@ function fixEvent(e) {
         e.pageY = e.clientY + (html && html.scrollTop || body && body.scrollTop || 0) - (html.clientTop || 0)
     }
  
-    // добавить which для IE
+    // РґРѕР±Р°РІРёС‚СЊ which РґР»СЏ IE
     if (!e.which && e.button) {
         e.which = e.button & 1 ? 1 : ( e.button & 2 ? 3 : ( e.button & 4 ? 2 : 0 ) )
     }

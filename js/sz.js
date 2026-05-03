@@ -3,7 +3,8 @@ var USER_LEVEL = 1;
 var CURRENT_LEVEL = 0;
 var SOUND_ON = true;
 var delay = 20;
-var options = { path: '/', expires: 365 * 14 };
+var USER_LEVEL_KEY = "USER_LEVEL";
+var SOUND_ON_KEY = "SOUND_ON";
 
 var GameState = null;
 
@@ -138,21 +139,43 @@ var quoteScreen = null;
 var cntPowerElement = null;
 var power = 0;
 
+function getStoredValue(key) {
+    try {
+        return localStorage.getItem(key);
+    }
+    catch (e) {
+        return null;
+    }
+}
+
+function setStoredValue(key, value) {
+    try {
+        localStorage.setItem(key, value);
+    }
+    catch (e) {
+    }
+}
+
 function loadUserProfile() {
-    if (!$.cookie("USER_LEVEL")) {
-        $.cookie("USER_LEVEL", USER_LEVEL, options);
+    var storedUserLevel = getStoredValue(USER_LEVEL_KEY);
+
+    if (!storedUserLevel) {
+        setStoredValue(USER_LEVEL_KEY, USER_LEVEL);
     }
     else {
-        USER_LEVEL = Number($.cookie("USER_LEVEL"));
+        USER_LEVEL = Number(storedUserLevel);
+
+        if (isNaN(USER_LEVEL) || USER_LEVEL < 1)
+            USER_LEVEL = 1;
     }
 
-    if ($.cookie("SOUND_ON") == "false")
+    if (getStoredValue(SOUND_ON_KEY) == "false")
         SOUND_ON = false;
 }
 
 function setSoundEnabled(isEnabled) {
     SOUND_ON = isEnabled;
-    $.cookie("SOUND_ON", SOUND_ON ? "true" : "false", options);
+    setStoredValue(SOUND_ON_KEY, SOUND_ON ? "true" : "false");
     updateSoundButtons();
 }
 
@@ -217,7 +240,7 @@ function init() {
     function setHelpPage(pageNumber) {
 
         if (typeof(pageNumber) != "number")
-            throw Error("Íå ÷èñëî");
+            throw Error("ÐÐµ Ñ‡Ð¸ÑÐ»Ð¾");
 
         for (var i = 1; i <= 5; i++) {
             var helpPage = document.getElementById("help" + i);
@@ -370,7 +393,7 @@ function QuoteState() {
 
     if (USER_LEVEL == CURRENT_LEVEL + 1) {
         USER_LEVEL = USER_LEVEL != 15 ? USER_LEVEL + 1 : USER_LEVEL;
-        $.cookie("USER_LEVEL", USER_LEVEL, options);
+        setStoredValue(USER_LEVEL_KEY, USER_LEVEL);
     }
 
     quoteScreen.onclick = function() {
