@@ -1,0 +1,10 @@
+{
+  "name": "solarzen",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "copy:celticspear": "node scripts/copy-to-celticspear.js",
+    "deploy:celticspear": "npm run build && node scripts/copy-to-celticspear.js"
+  }
+}
